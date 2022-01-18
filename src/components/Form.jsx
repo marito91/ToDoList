@@ -5,16 +5,20 @@ import '../css/Main.css';
 
 export default function Form(props) {
 
-    const [userInput, setUserInput] = useState(props.edit ? props.edit.value : '');
+    const [title, setTitle] = useState(props.edit ? props.edit.value : '');
 
-    const userInputRef = useRef(null);
+    const [descr, setDescr] = useState(props.edit ? props.edit.value : '');
 
-    useEffect(() => {
-        userInputRef.current.focus()
-    })
+    const titleRef = useRef(null);
+    const descrRef = useRef(null);
 
-    const handleChange = h => {
-        setUserInput(h.target.value);
+
+    const handleChangeTitle = h => {
+        setTitle(h.target.value);
+    }
+
+    const handleChangeDescription = h => {
+        setDescr(h.target.value);
     }
 
     const handleSubmit = h => {
@@ -22,10 +26,13 @@ export default function Form(props) {
 
         props.onSubmit({
             id: Math.floor(Math.random() * 10000),
-            text: userInput
+            text: title,
+            description: descr
         });
 
-        setUserInput('');
+        setTitle('');
+        setDescr('');
+
     };
 
     return (
@@ -34,22 +41,32 @@ export default function Form(props) {
                             <input 
                             name="text" 
                             type="text" 
-                            placeholder="Edit task" 
-                            value={userInput} 
+                            placeholder="Edit task name" 
+                            value={descr} 
                             className="input" 
-                            onChange={handleChange} 
-                            ref={userInputRef} />
+                            onChange={handleChangeDescription} 
+                            ref={descrRef} />
                             <button className="todo-btn">Edit Task</button>
                             </>) :
                             (<>
                             <input  
                             name="text" 
                             type="text" 
-                            placeholder="Add a task!" 
-                            value={userInput} 
-                            className="input" 
-                            onChange={handleChange} 
-                            ref={userInputRef} />
+                            placeholder="Title" 
+                            value={title} 
+                            className="input-title" 
+                            onChange={handleChangeTitle} 
+                            ref={titleRef}
+                            required /> <br />
+                            <input  
+                            name="text" 
+                            type="text" 
+                            placeholder="Description" 
+                            value={descr} 
+                            className="input-descr" 
+                            onChange={handleChangeDescription} 
+                            ref={descrRef}
+                            required /> <br />
                             <button className="todo-btn">Add task</button>
                             </>)
                         }

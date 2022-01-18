@@ -17,6 +17,36 @@
     border-bottom-right-radius: calc(3.25rem - 15px);
 }
 
+.input-title {
+    width: 50%;
+    margin: 5px;
+}
+
+.input-descr {
+    width: 80%;
+    margin: 5px;
+}
+
+.tasks {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.task-row {
+    display: flex;
+    text-align: left;
+    width: 50%;
+    align-items: center;
+    padding: 16px;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.4;
+  }
+
 
 .icons {
     display: flex;
@@ -37,8 +67,13 @@
     height: 36px;
 }
 
-.done {
+.check {
     float: left;
     width: 32px;
     height: 32px;
 }
+
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
