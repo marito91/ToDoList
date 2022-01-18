@@ -34,6 +34,16 @@ export default function ToDoList() {
         setList(newArray)
     }
 
+
+    const search = text => {
+        const oldArray = list;
+
+        const newArray = list.description.filter(l => l.includes(text) || text === '')
+
+        setList(newArray)
+
+    }
+
     // 
     const complete = id => {
         let updatedTasks = list.map(task => {
@@ -49,7 +59,7 @@ export default function ToDoList() {
     return (
         <div>
             <Form onSubmit={add} />
-            <Task tasks={list} completeTask={complete} removeTask={remove} updateTask={update}/>
+            <Task tasks={list} completeTask={complete} removeTask={remove} updateTask={update} filterTask={search}/>
         </div>
     )
 }

@@ -33,11 +33,14 @@
     margin: 5px;
 }
 
-.task-title {
-    text-align: left;
-    padding: 3px;
-    color: rgb(107, 117, 125);
-    /*background-color: rgb(107, 117, 125);*/
+.input-info {
+    width: 76%;
+    margin: 5px;
+}
+
+.search-btn {
+    padding: 5px;
+    border: none;
     border-radius: 5px;
 }
 
@@ -53,12 +56,11 @@
 .task-row {
     display: flex;
     text-align: left;
-    width: 50%;
-    align-items: center;
-    padding: 16px;
     border-radius: 5px;
-    width: 90%;
+    width: 80%;
     justify-content: space-between;
+    margin-bottom: 2%;
+    margin-left: 10%;
 }
 
 .task-edit {
@@ -83,18 +85,26 @@
     float: left;
     width: 32px;
     height: 32px;
+    cursor: pointer;
 }
 
 .edit {
     float: left;
     width: 36px;
     height: 36px;
+    cursor: pointer;
 }
 
 .check {
     float: left;
     width: 32px;
     height: 32px;
+    cursor: pointer;
+}
+
+.search-icon{
+    width: 24px;
+    height: 24px;
 }
 
 * {
@@ -116,5 +126,36 @@
         font-size: 24px;
         cursor: pointer;
         margin-left: 2%;
+    }
+
+    .task-row {
+        display: flex;
+        text-align: left;
+        border-radius: 5px;
+        width: 80%;
+        justify-content: space-between;
+        margin-bottom: 5%;
+        margin-left: 10%;
+    }
+
+    .input-info {
+        width: 70%;
+        margin: 5px;
+    }
+
+    .search-icon{
+        width: 24px;
+        height: 24px;
+    }
+
+    .search-btn {
+        padding: 3px;
+        border: none;
+        border-radius: 3px;
+    }
+
+    .input-info::-webkit-input-placeholder {
+        font-size: 14px;
+        line-height: 3;
     }
 }

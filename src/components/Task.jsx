@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 
+// Bootstrap
+
+import Card from 'react-bootstrap/Card'
+
 import Form from './Form'
 
 // Icons
@@ -36,17 +40,17 @@ export default function Task({ tasks, completeTask, removeTask, updateTask }) {
     return (
         <>
             {tasks.map((task, index) => (
-                    <div className={task.isComplete ? 'task-row done' : 'task-row'} key={index}>
-                        <div key={task.id} onClick={() => completeTask(task.id)}>
-                            <h3 className='task-title'>{task.text}</h3>
-                            <p>{task.description}</p>  
-                        </div>
-                        <div className="icons">
-                            <img src={editTask} className="edit" onClick={() => setEdit({ id: task.id, value: task.text, text: task.description })} alt="" />
-                            <img src={completed} className="check" onClick={() => completeTask(task.id)} alt="" />
-                            <img src={deleteTask} className="delete" onClick={() => removeTask(task.id)} alt="" />
-                        </div>
-                    </div>
+                <Card className={task.isComplete ? 'task-row done' : 'task-row'} key={index}>
+                    <Card.Header key={task.id} onClick={() => completeTask(task.id)}><strong>{task.text}</strong></Card.Header>
+                    <Card.Body>
+                      <Card.Text>
+                        {task.description}
+                      </Card.Text>
+                          <img src={completed} className="check" onClick={() => completeTask(task.id)} alt="" />
+                          <img src={editTask} className="edit" onClick={() => setEdit({ id: task.id, value: task.text, text: task.description })} alt="" />
+                          <img src={deleteTask} className="delete" onClick={() => removeTask(task.id)} alt="" />
+                    </Card.Body>
+                  </Card>
             ))}
         </>
     )
