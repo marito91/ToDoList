@@ -12,16 +12,21 @@ export default function Task({ tasks, completeTask, removeTask, updateTask }) {
 
     const [edit, setEdit] = useState ({
         id: null,
-        value: ''
+        value: '',
+        text: ''
+
     });
 
 
-    const submitUpdate = value => {
-        updateTask(edit.id, value)
+    const submitUpdate = (value, text) => {
+        updateTask(edit.id, value, text)
         setEdit({
             id: null,
-            value:''
+            value:'',
+            text: ''
         })
+
+        console.log(edit)
     }
 
     if (edit.id) {
@@ -33,15 +38,16 @@ export default function Task({ tasks, completeTask, removeTask, updateTask }) {
             {tasks.map((task, index) => (
                     <div className={task.isComplete ? 'task-row done' : 'task-row'} key={index}>
                         <div key={task.id} onClick={() => completeTask(task.id)}>
-                            {task.text}
+                            <h3 className='task-title'>{task.text}</h3>
+                            <p>{task.description}</p>  
                         </div>
                         <div className="icons">
-                            <img src={editTask} className="edit" onClick={() => setEdit({ id: task.id, value: task.text })} alt="" />
+                            <img src={editTask} className="edit" onClick={() => setEdit({ id: task.id, value: task.text, text: task.description })} alt="" />
                             <img src={completed} className="check" onClick={() => completeTask(task.id)} alt="" />
                             <img src={deleteTask} className="delete" onClick={() => removeTask(task.id)} alt="" />
                         </div>
                     </div>
-            ))};
+            ))}
         </>
     )
 }

@@ -9,7 +9,7 @@ export default function ToDoList() {
     // Este list se va actualizando en la medida en la que se agregan, quitan o editan tareas.
     const [list, setList] = useState([]);
 
-    // Se crea una función que va a agregar cada nueva tarea a la lista. En esta función se agregan la nueva tarea
+    // Se crea una función que va a agregar cada nueva tarea a la lista. En esta función se agrega la nueva tarea
     // junto a las existentes para crear una nueva lista actualizada.
     const add = task => {
         const newList = [task, ...list]

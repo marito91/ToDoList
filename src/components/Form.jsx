@@ -7,7 +7,7 @@ export default function Form(props) {
 
     const [title, setTitle] = useState(props.edit ? props.edit.value : '');
 
-    const [descr, setDescr] = useState(props.edit ? props.edit.value : '');
+    const [descr, setDescr] = useState(props.edit ? props.edit.text : '');
 
     const titleRef = useRef(null);
     const descrRef = useRef(null);
@@ -41,11 +41,11 @@ export default function Form(props) {
                             <input 
                             name="text" 
                             type="text" 
-                            placeholder="Edit task name" 
+                            placeholder="Edit task description" 
                             value={descr} 
-                            className="input" 
+                            className="input-descr task-edit"
                             onChange={handleChangeDescription} 
-                            ref={descrRef} />
+                            ref={descrRef} /> 
                             <button className="todo-btn">Edit Task</button>
                             </>) :
                             (<>

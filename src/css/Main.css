@@ -17,6 +17,12 @@
     border-bottom-right-radius: calc(3.25rem - 15px);
 }
 
+.todo-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
 .input-title {
     width: 50%;
     margin: 5px;
@@ -25,6 +31,18 @@
 .input-descr {
     width: 80%;
     margin: 5px;
+}
+
+.task-title {
+    text-align: left;
+    padding: 3px;
+    color: rgb(107, 117, 125);
+    /*background-color: rgb(107, 117, 125);*/
+    border-radius: 5px;
+}
+
+.task-description {
+    color: blue;
 }
 
 .tasks {
@@ -40,6 +58,11 @@
     padding: 16px;
     border-radius: 5px;
     width: 90%;
+    justify-content: space-between;
+}
+
+.task-edit {
+    margin-right: 2%;
 }
 
 .done {
@@ -53,6 +76,7 @@
     align-items: center;
     font-size: 24px;
     cursor: pointer;
+    margin-left: 2%;
 }
 
 .delete {
@@ -77,3 +101,20 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
       'Lucida Sans', Arial, sans-serif;
   }
+
+
+/* PHONES */
+@media only screen and (max-width: 768px) {
+    .task-edit {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .icons {
+        display: block;
+        align-items: center;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: 2%;
+    }
+}
