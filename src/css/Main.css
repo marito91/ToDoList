@@ -1,0 +1,44 @@
+.header {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+.todolist {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+    background-color: aquamarine;
+    border-top-left-radius: calc(3.25rem - 15px);
+    border-top-right-radius: calc(3.25rem - 15px);
+    border-bottom-left-radius: calc(3.25rem - 15px);
+    border-bottom-right-radius: calc(3.25rem - 15px);
+}
+
+
+.icons {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.delete {
+    float: left;
+    width: 32px;
+    height: 32px;
+}
+
+.edit {
+    float: left;
+    width: 36px;
+    height: 36px;
+}
+
+.done {
+    float: left;
+    width: 32px;
+    height: 32px;
+}
