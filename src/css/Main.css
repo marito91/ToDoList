@@ -34,7 +34,12 @@
 }
 
 .input-info {
-    width: 76%;
+    width: 78%;
+    margin: 5px;
+}
+
+.input-cats {
+    width: 20%;
     margin: 5px;
 }
 
@@ -139,7 +144,7 @@
     }
 
     .input-info {
-        width: 70%;
+        width: 69%;
         margin: 5px;
     }
 
@@ -157,5 +162,9 @@
     .input-info::-webkit-input-placeholder {
         font-size: 14px;
         line-height: 3;
+    }
+
+    .input-cats::-webkit-input-placeholder {
+        font-size: 0px;
     }
 }

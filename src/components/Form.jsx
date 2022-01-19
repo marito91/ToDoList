@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 
 // CSS
 import '../css/Main.css';
 
-// Icons
-import searchIcon from '../icons/search.svg';
 
 export default function Form(props) {
 
@@ -12,11 +10,8 @@ export default function Form(props) {
 
     const [descr, setDescr] = useState(props.edit ? props.edit.text : '');
 
-    const [info, setInfo] = useState('')
-
     const titleRef = useRef(null);
     const descrRef = useRef(null);
-    const infoRef = useRef(null);
 
 
     const handleChangeTitle = event => {
@@ -25,10 +20,6 @@ export default function Form(props) {
 
     const handleChangeDescription = event => {
         setDescr(event.target.value);
-    }
-
-    const handleChangeInformation = event => {
-        setInfo(event.target.value);
     }
 
     const handleSubmit = h => {
@@ -78,16 +69,6 @@ export default function Form(props) {
                             ref={descrRef}
                             /> <br />
                             <button className="todo-btn" style={{ marginBottom:"2%" }}>Add task</button> <br />
-                            <input  
-                            name="filter" 
-                            type="text" 
-                            id="filter"
-                            placeholder="Looking for a certain task?" 
-                            value={info} 
-                            className="input-info" 
-                            onChange={handleChangeInformation} 
-                            ref={infoRef} /> 
-                            <button className="todo-btn search-btn" style={{ marginBottom:"2%" }}> <img src={searchIcon} className='search-icon' alt="" /> </button>
                             </>)
                         }
         </form>
