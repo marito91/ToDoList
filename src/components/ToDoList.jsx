@@ -65,6 +65,7 @@ export default function ToDoList() {
             window.alert("No results found.")
             setFilteredList(list)
         } else {
+            window.alert("Results found. To load all tasks again, search with empty input or check the tasks found.")
             newArray = list.filter( (l) => l.description.toLowerCase().includes(text.toLowerCase()))
             setFilteredList(newArray)
         }
@@ -82,12 +83,17 @@ export default function ToDoList() {
         })
 
         setList(updatedTasks)
+        setFilteredList(updatedTasks)
     }
 
-
-    const catFacts = (() => 
-        fetch('https://catfact.ninja/docs', {
+    // Esta función recibe el número de facts que se van a buscar dentro de la API. Se hace el respectivo
+    // fetch para extraer la info de la API con el método GET y dependiendo del "numberOfFacts" se hace o no
+    // un loop para extraer varios a la vez y añadirlos a la lista de tareas.
+    const catFacts = numberOfFacts => 
+        
+        fetch('https://catfact.ninja/facts', {
             method:"GET",
+            mode: "cors",
             headers: { "content-type": "application/json",
                         "Access-Control-Allow-Headers" : "Content-Type",
                         "Access-Control-Allow-Origin": "*",
@@ -95,8 +101,51 @@ export default function ToDoList() {
                     }
         })
             .then(res => res.json())
-            .then(data => console.log(data))
-    )
+            .then(res => {
+                console.log(res.data[0]) // Se hace seguimiento en consola para verificar el valor que extrae
+                console.log(list) // Se hace seguimiento en consola para conocer el estado de list
+                
+                // Se inicializan variables para su uso en las condicionales a continuación
+                let FactsList = [];
+                let facts;
+                let newList = [];
+                // Si el usuario no especifica número de facts que quiere recibir, se extrae uno random y se crea el json
+                // para agregarlo a la lista.
+                if (numberOfFacts === '' || numberOfFacts === null || numberOfFacts === undefined) {
+                    const factJson = {id: Math.floor(Math.random() * 10000),
+                                        text: "Random Cat Fact",
+                                        description: res.data[0].fact                  
+                                    }
+                        const newFactsList = [factJson, ...list]
+                        setList(newFactsList)
+                        setFilteredList(newFactsList)
+                } else {
+                    for (let i = 0; i < numberOfFacts; i++) {
+                        facts = {id: Math.floor(Math.random() * 10000),
+                                        text: "Random Cat Fact",
+                                        description: res.data[i].fact                  
+                                    }
+                        FactsList.push(facts)
+                      }
+
+                      console.log(FactsList) // seguimiento en consola
+
+                      FactsList.forEach((fact) => newList.push(fact)) // Se añaden los json de FactsList
+
+                      console.log(newList) // se hace seguimiento en consola
+
+                      list.forEach(task => newList.push(task)) // Se añaden los json de la lista actualizada
+
+                      console.log(newList) // Se hace seguimiento en consola
+
+                      // Se actualizan las listas con los random facts
+                      setList(newList)
+                      setFilteredList(newList)
+
+                }
+            }
+        )
+    
 
 
 

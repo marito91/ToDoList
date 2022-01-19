@@ -45,8 +45,6 @@ export default function Task({ tasks, completeTask, removeTask, updateTask, filt
         return <Form edit={edit} onSubmit={submitUpdate} />
     }
 
-    console.log(tasks)
-
 
     return (
         <>

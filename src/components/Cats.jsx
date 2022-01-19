@@ -25,7 +25,7 @@ export default function Cats(props) {
                 name="filter" 
                 type="text" 
                 id="filter"
-                placeholder="How many facts do you want?" 
+                placeholder="How many you want? 10 max." 
                 value={numberOfFacts} 
                 className="input-cats" 
                 onChange={handleChangeFacts} 
