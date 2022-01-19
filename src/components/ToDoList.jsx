@@ -15,22 +15,27 @@ export default function ToDoList() {
     const[filteredList, setFilteredList] = useState(null);
 
     // Se crea una función que va a agregar cada nueva tarea a la lista. En esta función se agrega la nueva tarea
-    // junto a las existentes para crear una nueva lista actualizada.
+    // junto a las existentes para crear una nueva lista actualizada. (aplica para lista filtrada también)
     const add = task => {
         const newList = [task, ...list]
 
         setList(newList);
 
+        const newFilteredList = [task, ...list]
+
+        setFilteredList(newFilteredList)
+
         // Se hace seguimiento en consola
         console.log(newList)
     }
 
-    // Esta función recibe el id de la tarea y compara 
-    const update = (taskId, newValue) => {
-        setList(origin => origin.map(item => (item.id === taskId ? newValue : item))
+    // Esta función recibe el id de la tarea e identifica el valor para generar el nuevo array con la nueva descripción.
+    // Aplica para ambas listas
+    const update = (taskId, newDescription) => {
+        setList(origin => origin.map(item => (item.id === taskId ? newDescription : item))
         );
 
-        setFilteredList(origin => origin.map(item => (item.id === taskId ? newValue : item))
+        setFilteredList(origin => origin.map(item => (item.id === taskId ? newDescription : item))
         );
     };
 
@@ -47,6 +52,9 @@ export default function ToDoList() {
     }
 
 
+    // Esta función permitirá crear una nueva lista filtrada según el parámetro "text" que recibe. Si "text" está vacío
+    // entonces lanzará una alerta que dice que no se encontraron resultados. De lo contrario revisará si la lista principal
+    // contiene el parámetro "text" entre las descripciones. Esto se hace en lowercase para atinar la búsqueda.
     const search = text => {
 
         console.log(list)
@@ -64,7 +72,7 @@ export default function ToDoList() {
         console.log(newArray)
     }
 
-    // 
+    // Esta función identifica la tarea que se completó para actualizarla y aplicarle el css correspondiente.
     const complete = id => {
         let updatedTasks = list.map(task => {
             if (task.id === id) {
@@ -95,7 +103,9 @@ export default function ToDoList() {
 
     return (
         <div>
+            {/*Se despliegan todos los componentes con sus respectivos props*/}
             <Form onSubmit={add} />
+            {/* Se determinan l@s funciones/datos que se van a utilizar para cada parámetro */}
             <Task tasks={list} completeTask={complete} removeTask={remove} updateTask={update} filtered={filteredList} />
             <Search onSubmit={search}/>
             <Cats onSubmit={catFacts} />
